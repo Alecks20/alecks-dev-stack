@@ -19,3 +19,7 @@
 "api.alecks.dev" {
     reverse_proxy http://api_placeholder
 }
+
+"u.alecks.dev" {
+    reverse_proxy http://url_shortener
+}
