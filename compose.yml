@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+
+  frontpage:
+    restart: unless-stopped
+    image: ghcr.io/alecks20/personal-website:stable
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  url_shortener:
+    restart: unless-stopped
+    image: ghcr.io/alecks20/url-shortener:latest
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    restart: unless-stopped
+    image: mongo:latest
+    volumes:
+      - ./db:/data/db
+    env_file:
+      - .env
+
+  proxy:
+    image: caddy
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./data/caddy-data:/data
+      - ./data/caddy-config:/config
+
+
+volumes:
+  url_shortener_db:

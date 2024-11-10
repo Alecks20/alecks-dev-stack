@@ -1,0 +1,21 @@
+"https://alecks.dev" {
+
+
+    route /u* {
+		uri strip_prefix /u
+		reverse_proxy http://url_shortener
+	}
+
+    route /api* {
+		uri strip_prefix /api
+		reverse_proxy http://api_placeholder
+	}
+
+
+	reverse_proxy http://frontpage
+}
+
+
+"api.alecks.dev" {
+    reverse_proxy http://api_placeholder
+}
