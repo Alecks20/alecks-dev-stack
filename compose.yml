@@ -28,6 +28,12 @@ services:
     ports:
       - "5050:27017"
 
+  api:
+    restart: unless-stopped
+    image: ghcr.io/alecks20/api:latest
+    env_file:
+     - .env
+
   proxy:
     image: caddy
     restart: unless-stopped
@@ -41,6 +47,4 @@ services:
       - ./data/caddy-data:/data
       - ./data/caddy-config:/config
 
-
-volumes:
-  url_shortener_db:
+#volumes:
