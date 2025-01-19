@@ -2,17 +2,9 @@ version: '3.8'
 
 services:
 
-  frontpage:
+  website:
     restart: unless-stopped
-    image: ghcr.io/alecks20/personal-website:stable
-    depends_on:
-      - db
-    env_file:
-      - .env
-
-  url_shortener:
-    restart: unless-stopped
-    image: ghcr.io/alecks20/url-shortener:latest
+    image: ghcr.io/alecks20/alecks.dev:latest
     depends_on:
       - db
     env_file:
@@ -25,14 +17,14 @@ services:
       - ./db:/data/db
     env_file:
       - .env
-    ports:
-      - "5050:27017"
+    #ports:
+    #  - "5050:27017"
 
-  api:
-    restart: unless-stopped
-    image: ghcr.io/alecks20/api:latest
-    env_file:
-     - .env
+  #api:
+  #  restart: unless-stopped
+  #  image: ghcr.io/alecks20/api:latest
+  #  env_file:
+  #   - .env
 
   proxy:
     image: caddy
@@ -46,5 +38,4 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./data/caddy-data:/data
       - ./data/caddy-config:/config
-
-#volumes:
+      
