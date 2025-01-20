@@ -38,6 +38,15 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 30 --cleanup
 
+  #activating when cdn is done
+  #cdn:
+  #  image: ghcr.io/alecks20/cdn:latest
+  #  restart: unless-stopped
+  #  volumes:
+  #    - ./cdn:/content
+  #  env_file:
+  #    - .env
+
   #rclone:
   #  restart: unless-stopped
   #  image: rclone/rclone:latest
@@ -47,3 +56,5 @@ services:
   #    - ./db:/data:ro
   #  environment:
   #    - RCLONE_CONFIG=/config/rclone/rclone.conf
+
+
