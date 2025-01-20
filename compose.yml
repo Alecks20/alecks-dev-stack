@@ -41,7 +41,7 @@ services:
   rclone:
     restart: unless-stopped
     image: rclone/rclone:latest
-    command: /bin/sh -c "while true; do rclone sync /data b2:alecks-backups/alecks-dev-db --progress; sleep 86400; done"
+    command: ["sync", "/data", "b2:alecks-backups/alecks-dev-db", "--progress"]
     volumes:
       - ./rclone.conf:/config/rclone/rclone.conf:ro
       - ./db:/data:ro
