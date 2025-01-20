@@ -17,14 +17,6 @@ services:
       - ./db:/data/db
     env_file:
       - .env
-    #ports:
-    #  - "5050:27017"
-
-  #api:
-  #  restart: unless-stopped
-  #  image: ghcr.io/alecks20/api:latest
-  #  env_file:
-  #   - .env
 
   proxy:
     image: caddy
@@ -41,8 +33,17 @@ services:
 
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 30 --cleanup
+
+  rclone:
+    restart: unless-stopped
+    image: rclone/rclone:latest
+    command: ["sync", "/data", "b2:alecks-backups/alecks-dev-db", "--progress"]
+    volumes:
+      - ./rclone.conf:/config/rclone/rclone.conf:ro
+      - ./db:/data:ro
+    environment:
+      - RCLONE_CONFIG=/config/rclone/rclone.conf
