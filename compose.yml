@@ -38,12 +38,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 30 --cleanup
 
-  rclone:
-    restart: unless-stopped
-    image: rclone/rclone:latest
-    command: ["sync", "/data", "b2:alecks-backups/alecks-dev-db", "--progress"]
-    volumes:
-      - ./rclone.conf:/config/rclone/rclone.conf:ro
-      - ./db:/data:ro
-    environment:
-      - RCLONE_CONFIG=/config/rclone/rclone.conf
+  #rclone:
+  #  restart: unless-stopped
+  #  image: rclone/rclone:latest
+  #  command: ["sync", "/data", "b2:alecks-backups/alecks-dev-db", "--progress"]
+  #  volumes:
+  #    - ./rclone.conf:/config/rclone/rclone.conf:ro
+  #    - ./db:/data:ro
+  #  environment:
+  #    - RCLONE_CONFIG=/config/rclone/rclone.conf
