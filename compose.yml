@@ -48,14 +48,13 @@ services:
     env_file:
       - .env
 
-  #activating when cdn is done
-  #cdn:
-  #  image: ghcr.io/alecks20/cdn:latest
-  #  restart: unless-stopped
-  #  volumes:
-  #    - ./cdn:/content
-  #  env_file:
-  #    - .env
+  cdn:
+    image: ghcr.io/alecks20/cdn:latest
+    restart: unless-stopped
+    volumes:
+      - ./cdn:/content
+    env_file:
+      - .env
 
   #rclone:
   #  restart: unless-stopped
