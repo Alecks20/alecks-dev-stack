@@ -1,3 +1,7 @@
 "https://alecks.dev", "https://www.alecks.dev" {
 	reverse_proxy http://website
 }
+
+"https://packs.alecks.dev" {
+	reverse_proxy http://packs:3050
+}

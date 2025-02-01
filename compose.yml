@@ -38,6 +38,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 30 --cleanup
 
+  packs:
+    image: ghcr.io/alecks20/packs-website:latest
+    restart: unless-stopped
+    volumes:
+      - ./cdn/packs:/packs
+    depends_on:
+      - db
+    env_file:
+      - .env
+
   #activating when cdn is done
   #cdn:
   #  image: ghcr.io/alecks20/cdn:latest
