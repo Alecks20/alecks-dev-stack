@@ -5,3 +5,7 @@
 "https://packs.alecks.dev" {
 	reverse_proxy http://packs:3050
 }
+
+"cdn.alecks.dev" {
+	reverse_proxy http://cdn
+}
