@@ -25,6 +25,7 @@ services:
       - .env
     ports:
       - "5842:80"
+      - "5843:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./data/caddy-data:/data
