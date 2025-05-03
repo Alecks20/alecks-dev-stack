@@ -3,6 +3,6 @@
  auto_https off
 }
 
-"alecks.dev", "www.alecks.dev" {
+"http://alecks.dev", "http://www.alecks.dev" {
 	reverse_proxy http://website
 }
