@@ -35,7 +35,7 @@ services:
       - ./data/caddy-config:/config
 
   watchtower:
-    container_name: alecks-dev-wachtower
+    container_name: alecks-dev-watchtower
     image: containrrr/watchtower
     restart: unless-stopped
     volumes:
