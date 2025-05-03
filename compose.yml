@@ -4,7 +4,7 @@ services:
 
   website:
     restart: unless-stopped
-    name: alecks-dev-website
+    container_name: alecks-dev-website
     image: ghcr.io/alecks20/alecks.dev:latest
     depends_on:
       - db
@@ -13,7 +13,7 @@ services:
 
   db:
     restart: unless-stopped
-    name: alecks-dev-db
+    container_name: alecks-dev-db
     image: mongo:latest
     volumes:
       - ./db:/data/db
@@ -21,7 +21,7 @@ services:
       - .env
 
   proxy:
-    name: alecks-dev-proxy
+    container_name: alecks-dev-proxy
     image: caddy
     restart: unless-stopped
     env_file:
@@ -35,7 +35,7 @@ services:
       - ./data/caddy-config:/config
 
   watchtower:
-    name: alecks-dev-wachtower
+    container_name: alecks-dev-wachtower
     image: containrrr/watchtower
     restart: unless-stopped
     volumes:
