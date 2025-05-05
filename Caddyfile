@@ -6,3 +6,7 @@
 "http://alecks.dev", "http://www.alecks.dev" {
 	reverse_proxy http://website
 }
+
+"http://nightly.alecks.dev" {
+   reverse_proxy http://website-nightly
+}
