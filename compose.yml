@@ -11,14 +11,14 @@ services:
     env_file:
       - .env
 
-  website-nightly:
-    restart: unless-stopped
-    container_name: alecks-dev-website-nightly
-    image: ghcr.io/alecks20/alecks.dev:nightly
-    depends_on:
-      - db
-    env_file:
-      - .env
+  #website-nightly:
+  #  restart: unless-stopped
+  #  container_name: alecks-dev-website-nightly
+  #  image: ghcr.io/alecks20/alecks.dev:nightly
+  #  depends_on:
+  #    - db
+  #  env_file:
+  #    - .env
 
   db:
     restart: unless-stopped
