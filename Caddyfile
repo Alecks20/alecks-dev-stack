@@ -3,10 +3,10 @@
  auto_https off
 }
 
-"http://alecks.dev", "http://www.alecks.dev" {
-	reverse_proxy http://website
+"https://api.alecks.dev" {
+	reverse_proxy http://api
 }
 
-"http://nightly.alecks.dev" {
-   reverse_proxy http://website-nightly
+"link.alecks.dev" {
+   reverse_proxy http://urls
 }
