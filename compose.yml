@@ -2,41 +2,41 @@ version: '3.8'
 
 services:
 
-  #website:
+  website:
+    restart: unless-stopped
+    container_name: alecks-dev-website
+    image: ghcr.io/alecks20/alecks.dev:latest
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  #urls:
+  #  container_name: alecks-dev-urls
   #  restart: unless-stopped
-  #  container_name: alecks-dev-website
-  #  image: ghcr.io/alecks20/alecks.dev:latest
+  #  image: ghcr.io/alecks20/url-shortener:latest
   #  depends_on:
   #    - db
   #  env_file:
   #    - .env
 
-  urls:
-    container_name: alecks-dev-urls
-    restart: unless-stopped
-    image: ghcr.io/alecks20/url-shortener:latest
-    depends_on:
-      - db
-    env_file:
-      - .env
+  #api:
+  #  container_name: alecks-dev-api
+  #  restart: unless-stopped
+  #  image: ghcr.io/alecks20/api:latest
+  #  depends_on:
+  #    - db
+  #  env_file:
+  #    - .env
 
-  api:
-    container_name: alecks-dev-api
-    restart: unless-stopped
-    image: ghcr.io/alecks20/api:latest
-    depends_on:
-      - db
-    env_file:
-      - .env
-
-  db:
-    restart: unless-stopped
-    container_name: alecks-dev-db
-    image: mongo:latest
-    volumes:
-      - ./db:/data/db
-    env_file:
-      - .env
+  #db:
+  #  restart: unless-stopped
+  #  container_name: alecks-dev-db
+  #  image: mongo:latest
+  #  volumes:
+  #    - ./db:/data/db
+  #  env_file:
+  #    - .env
 
   proxy:
     container_name: alecks-dev-proxy
@@ -46,7 +46,6 @@ services:
       - .env
     ports:
       - "127.0.0.1:5050:80"
-      - "127.0.0.1:5051:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./data/caddy-data:/data
