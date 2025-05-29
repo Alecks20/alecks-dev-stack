@@ -6,8 +6,8 @@ services:
     restart: unless-stopped
     container_name: alecks-dev-website
     image: ghcr.io/alecks20/alecks.dev:latest
-    depends_on:
-      - db
+    #depends_on:
+    #  - db
     env_file:
       - .env
 
