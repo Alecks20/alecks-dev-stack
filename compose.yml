@@ -20,14 +20,14 @@ services:
   #  env_file:
   #    - .env
 
-  #api:
-  #  container_name: alecks-dev-api
-  #  restart: unless-stopped
-  #  image: ghcr.io/alecks20/api:latest
-  #  depends_on:
-  #    - db
-  #  env_file:
-  #    - .env
+  api:
+    container_name: alecks-dev-api
+    restart: unless-stopped
+    image: ghcr.io/alecks20/api:latest
+    depends_on:
+      - db
+    env_file:
+      - .env
 
   #db:
   #  restart: unless-stopped
