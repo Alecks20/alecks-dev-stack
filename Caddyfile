@@ -4,5 +4,9 @@
 }
 
 "http://alecks.dev", "http://www.alecks.dev" {
-	reverse_proxy http://website
+ reverse_proxy http://website
+}
+
+"http://api.alecks.dev" {
+ reverse_proxy http://api
 }
